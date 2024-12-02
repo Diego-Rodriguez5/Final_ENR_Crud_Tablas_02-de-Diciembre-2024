@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+        <h1> Datos </h1>
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/registrarProveedores/" method="POST"> {% csrf_token %} <!--- formulario -->
+                <div class="form-group">
+                    <input type="text" id="txtidProveedores" name="txtidProveedores" class="form-control"
+                    placeholder="Id Proveedores"  required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    placeholder="Nombre" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                    placeholder="Direccion" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+                    placeholder="Telefono" maxLenght="100" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                    placeholder="Correo" maxLenght="15" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txttipoProducto" name="txttipoProducto" class="form-control"
+                    placeholder="TipoProducto" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtpaisOrigen" name="txtpaisOrigen" class="form-control"
+                    placeholder="PaisOrigen" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtestado" name="txtestado" class="form-control"
+                    placeholder="Estado" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtciudad" name="txtciudad" class="form-control"
+                    placeholder="Ciudad" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtcodigoPostal" name="txtcodigoPostal" class="form-control"
+                    placeholder="CodigoPostal" maxLenght="50" required>
+                </div>
+
+                
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+    </div><!-- columna izquierda -->
+    
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!-- columna derecha -->
+        <h1>Listado de Proveedores</h1>
+    <img class="w-50" src="{% static 'img/proveedor.jpg' %}" width="400" height="400" alt="">
+    
+    
+    <!-- La tabla -->
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">IdProveedores</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">TipoProducto</th>
+            <th scope="col">PaisOrigen</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Ciudad</th>
+            <th scope="col">CodigoPostal</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misproveedores %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.idProveedores}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.direccion}}</td>
+                    <td>{{m.telefono}}</td>
+                    <td>{{m.correo}}</td>
+                    <td>{{m.tipoProducto}}</td>
+                    <td>{{m.paisOrigen}}</td>
+                    <td>{{m.estado}}</td>
+                    <td>{{m.ciudad}}</td>
+                    <td>{{m.codigoPostal}}</td>
+                    <td> <a href="seleccionarProveedores/{{m.idProveedores}}" class="btn btn-info" >Editar</a> </td> 
+                    <td> <a href="borrarProveedores/{{m.idProveedores}}" class="btn btn-danger" >Borrar</a> </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+
+    </div> <!-- columna derecha -->
+</div><!-- la fila -->
+
+{% endblock %}

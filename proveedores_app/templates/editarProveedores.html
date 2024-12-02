@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+    <!-- La targeta card -->
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/editarProveedores/" method="POST"> {% csrf_token %} <!--- formulario -->
+
+                <div class="form-group">
+                    <input type="text" id="txtidProveedores" name="txtidProveedores" class="form-control"
+                    value="{{misproveedores.idProveedores}}"  required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    value="{{misproveedores.nombre}}" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                    value="{{misproveedores.direccion}}" maxLenght="100" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+                    value="{{misproveedores.telefono}}" maxLenght="15" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                    value="{{misproveedores.correo}}" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txttipoProducto" name="txttipoProducto" class="form-control"
+                    value="{{misproveedores.tipoProducto}}" maxLenght="30" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtpaisOrigen" name="txtpaisOrigen" class="form-control"
+                    value="{{misproveedores.paisOrigen}}" maxLenght="30" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtestado" name="txtestado" class="form-control"
+                    value="{{misproveedores.estado}}" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtciudad" name="txtciudad" class="form-control"
+                    value="{{misproveedores.ciudad}}" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtcodigoPostal" name="txtcodigoPostal" class="form-control"
+                    value="{{misproveedores.codigoPostal}}" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+
+
+<!-- Fin la targeta card -->
+
+</div> <!-- Columna  -->
+
+</div> <!-- la fila  -->
+
+{% endblock %}
