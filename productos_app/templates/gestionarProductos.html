@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+        <h1> Datos </h1>
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/registrarProductos/" method="POST"> {% csrf_token %} <!--- formulario -->
+                <div class="form-group">
+                    <input type="text" id="txtidProductos" name="txtidProductos" class="form-control"
+                    placeholder="Id Productos" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    placeholder="Nombre" maxLenght="50" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtcategoria" name="txtcategoria" class="form-control"
+                    placeholder="Categoria" maxLenght="30" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtprecio" name="txtprecio" class="form-control"
+                    placeholder="Precio" maxLenght="10000" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtstock" name="txtstock" class="form-control"
+                    placeholder="Stock" maxLenght="10000" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="datecaducidad" name="datecaducidad" class="form-control"
+                    placeholder="FechaCaducidad" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="txtdescripcion" name="txtdescripcion" class="form-control"
+                    placeholder="Descripcion" maxLenght="100" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="numidsucursal" name="numidsucursal" class="form-control"
+                    placeholder="Id Sucursal"  required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="numidproveedor" name="numidproveedor" class="form-control"
+                    placeholder="Id Proveedor"  required>
+                </div>
+
+
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+
+    </div> <!-- targeta -->
+
+    </div><!-- columna izquierda -->
+
+    <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!-- columna derecha -->
+    <h1>Listado de Productos</h1>
+    <img class="w-50" src="{% static 'img/productos.jpg' %}" width="400" height="auto" alt="">
+
+    
+    
+    <!-- La tabla -->
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">IdProductos</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">FechaCaducidad</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">IdSucursal</th>
+            <th scope="col">IdProveedor</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misproductos %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.idProductos}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.categoria}}</td>
+                    <td>{{m.precio}}</td>
+                    <td>{{m.stock}}</td>
+                    <td>{{m.fechaCaducidad}}</td>
+                    <td>{{m.descripcion}}</td>
+                    <td>{{m.idSucursal}}</td>
+                    <td>{{m.idProveedor}}</td>
+                    <td> <a href="seleccionarProductos/{{m.idProductos}}" class="btn btn-info" >Editar</a> </td>
+                    <td> <a href="borrarProductos/{{m.idProductos}}" class="btn btn-danger" >Borrar</a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </div> <!-- columna derecha -->
+</div><!-- la fila -->
+</div>
+
+{% endblock %}
