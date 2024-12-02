@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+<div class="col-md-4 offset-md-4">
+    <!-- La targeta card -->
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/editarVenta/" method="POST"> {% csrf_token %} <!--- formulario -->
+
+                <div class="form-group">
+                    <input type="text" id="txtidVenta" name="txtidVenta" class="form-control"
+                    value="{{misventa.idVenta}}" required>
+                </div>
+
+                <div class="form-group py-3">
+                    <input type="text" id="dateventa" name="dateventa" class="form-control"
+                    value="{{misventa.fechaVenta}}"  required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txttotal" name="txttotal" class="form-control"
+                    value="{{misventa.total}}"  required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtidCliente" name="txtidCliente" class="form-control"
+                    value="{{misventa.idCliente}}"  required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtidEmpleado" name="txtidEmpleado" class="form-control"
+                    value="{{misventa.idEmpleado}}" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txttipoPago" name="txttipoPago" class="form-control"
+                    value="{{misventa.tipoPago}}"  max="50" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtdescuento" name="txtdescuento" class="form-control"
+                    value="{{misventa.descuento}}" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtidProducto" name="txtidProducto" class="form-control"
+                    value="{{misventa.idProducto}}"  required>
+                </div>
+                
+                <div class="form-group py-2">
+                    <input type="text" id="txtcantidad" name="txtcantidad" class="form-control"
+                    value="{{misventa.cantidad}}" max="500" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+
+
+<!-- Fin la targeta card -->
+
+</div> <!-- Columna  -->
+
+</div> <!-- la fila  -->
+
+{% endblock %}
